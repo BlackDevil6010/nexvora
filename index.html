@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Nexvora | Design. Build. Secure. Grow.</title>
+    <title>Pyronetics | Design. Build. Secure. Grow.</title>
     
     <!-- Google Fonts: Syne (Headings) & Manrope (Body) -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -114,30 +114,6 @@
             display: block;
             opacity: 1;
         }
-
-        /* Navbar Custom Styles */
-        .nav-link {
-            position: relative;
-            padding-bottom: 4px;
-        }
-        .nav-link::after {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            width: 100%;
-            height: 2px;
-            border-radius: 2px;
-            background: linear-gradient(90deg, #534AB7, #0F6E56);
-            transform: scaleX(0);
-            transform-origin: right;
-            transition: transform 0.3s cubic-bezier(0.25, 0.1, 0.25, 1);
-        }
-        .nav-link:hover::after,
-        .nav-link.active::after {
-            transform: scaleX(1);
-            transform-origin: left;
-        }
         
         /* Mobile Menu */
         #mobile-menu {
@@ -162,6 +138,20 @@
         <div class="absolute bottom-[-10%] right-[-10%] w-[50vw] h-[50vw] rounded-full bg-[#0F6E56]/10 blur-[120px] animate-[drift-reverse_25s_ease-in-out_infinite_alternate]"></div>
         <div class="absolute top-[40%] left-[50%] w-[40vw] h-[40vw] rounded-full bg-[#7B6EF6]/5 blur-[120px] animate-[drift_30s_ease-in-out_infinite_alternate-reverse]"></div>
         
+        <!-- Global Transparent Logo Watermark -->
+        <div class="absolute inset-0 flex items-center justify-center opacity-[0.03] pointer-events-none">
+            <!-- Custom Shield + Code + Growth Arrow SVG -->
+            <svg xmlns="http://www.w3.org/2000/svg" class="w-[80vw] h-[80vw] max-w-[800px] max-h-[800px] text-white" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="0.5" stroke-linecap="round" stroke-linejoin="round">
+                <!-- Shield Base -->
+                <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" class="opacity-30" />
+                <!-- Code Brackets -->
+                <path d="M8 10L5 13l3 3" />
+                <path d="M16 10l3 3-3 3" />
+                <!-- Upward Arrow / Spark -->
+                <path d="M12 17V7m-3 3l3-3 3 3" />
+            </svg>
+        </div>
+
         <!-- Subtle Canvas Particles (Stars/Dust) -->
         <canvas id="bg-canvas" class="absolute inset-0 opacity-40"></canvas>
         
@@ -170,38 +160,46 @@
     </div>
 
     <!-- Header Navigation -->
-    <header id="navbar" class="fixed top-0 w-full z-50 transition-all duration-500 border-b border-transparent py-6 bg-transparent">
-        <div class="container mx-auto px-6 max-w-6xl flex items-center justify-between">
-            <div onclick="navigate('home')" class="group flex items-center gap-2 cursor-pointer font-medium text-white tracking-tight">
-                <div class="w-6 h-6 rounded-md bg-gradient-to-br from-[#534AB7] to-[#0F6E56] flex items-center justify-center shadow-[0_0_15px_rgba(83,74,183,0.5)] group-hover:scale-110 group-hover:shadow-[0_0_25px_rgba(15,110,86,0.6)] transition-all duration-300">
-                    <span class="text-white text-[11px] font-bold brand-text">N</span>
-                </div>
-                <span class="text-xl font-bold brand-text tracking-wide">Nexvora</span>
+    <header id="navbar" class="fixed top-6 left-1/2 -translate-x-1/2 w-[92%] max-w-6xl z-50 transition-all duration-500 border border-white/10 bg-[#0A0A0A]/40 backdrop-blur-xl shadow-[0_8px_32px_rgba(0,0,0,0.3)] rounded-full px-4 py-3 flex items-center justify-between">
+        <div onclick="navigate('home')" class="group flex items-center gap-3 cursor-pointer font-medium text-white tracking-tight pl-2 md:pl-4">
+            <div class="relative flex items-center justify-center w-9 h-9 rounded-full bg-gradient-to-br from-[#534AB7] to-[#0F6E56] shadow-[0_0_20px_rgba(83,74,183,0.5)] group-hover:scale-110 group-hover:-rotate-6 group-hover:shadow-[0_0_30px_rgba(15,110,86,0.6)] transition-all duration-300 border border-white/20 overflow-hidden">
+                <div class="absolute -top-1/2 -left-1/2 w-[200%] h-[200%] bg-gradient-to-b from-white/30 to-transparent rotate-45 transform origin-bottom-right pointer-events-none"></div>
+                <!-- Custom Shield + Code + Growth Arrow SVG -->
+                <svg xmlns="http://www.w3.org/2000/svg" class="w-[20px] h-[20px] text-white relative z-10 drop-shadow-md" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" class="opacity-40" />
+                    <path d="M8 10L5 13l3 3" />
+                    <path d="M16 10l3 3-3 3" />
+                    <path d="M12 17V7m-3 3l3-3 3 3" />
+                </svg>
             </div>
+            <span class="text-xl font-bold brand-text tracking-wide hidden sm:block">Pyronetics</span>
+        </div>
 
-            <!-- Desktop Nav -->
-            <nav class="hidden md:flex gap-8">
-                <button onclick="navigate('home')" class="nav-link active text-white font-medium text-sm transition-colors" data-target="home">Home</button>
-                <button onclick="navigate('services')" class="nav-link text-neutral-400 hover:text-white font-medium text-sm transition-colors" data-target="services">Services</button>
-                <button onclick="navigate('portfolio')" class="nav-link text-neutral-400 hover:text-white font-medium text-sm transition-colors" data-target="portfolio">Portfolio</button>
-                <button onclick="navigate('about')" class="nav-link text-neutral-400 hover:text-white font-medium text-sm transition-colors" data-target="about">About</button>
-            </nav>
+        <!-- Desktop Nav (With magnetic pill slider) -->
+        <nav class="hidden md:flex relative items-center p-1.5 bg-white/[0.03] border border-white/5 rounded-full" id="desktop-nav">
+            <!-- Magic Slider Indicator -->
+            <div id="nav-slider" class="absolute top-1.5 bottom-1.5 bg-white/10 rounded-full transition-all duration-300 ease-out z-0 border border-white/10 shadow-[0_0_15px_rgba(255,255,255,0.05)]"></div>
+            
+            <button onclick="navigate('home')" class="nav-link active relative z-10 px-6 py-2 text-white font-medium text-sm transition-colors rounded-full" data-target="home">Home</button>
+            <button onclick="navigate('services')" class="nav-link relative z-10 px-6 py-2 text-neutral-400 hover:text-white font-medium text-sm transition-colors rounded-full" data-target="services">Services</button>
+            <button onclick="navigate('portfolio')" class="nav-link relative z-10 px-6 py-2 text-neutral-400 hover:text-white font-medium text-sm transition-colors rounded-full" data-target="portfolio">Portfolio</button>
+            <button onclick="navigate('about')" class="nav-link relative z-10 px-6 py-2 text-neutral-400 hover:text-white font-medium text-sm transition-colors rounded-full" data-target="about">About</button>
+        </nav>
 
-            <div class="hidden md:block">
-                <button onclick="navigate('contact')" class="group relative inline-flex items-center justify-center overflow-hidden rounded-full p-[1px] font-semibold text-white transition-all hover:shadow-[0_0_20px_rgba(83,74,183,0.4)] hover:-translate-y-0.5">
-                    <span class="absolute inset-0 bg-gradient-to-r from-[#534AB7] to-[#0F6E56] opacity-70 group-hover:opacity-100 transition-opacity duration-300"></span>
-                    <span class="relative flex items-center gap-2 rounded-full bg-[#0A0A0A] px-5 py-2 text-xs transition-all group-hover:bg-transparent">
-                        Let's Talk <i data-lucide="arrow-right" class="w-3 h-3 group-hover:translate-x-1 transition-transform"></i>
-                    </span>
-                </button>
-            </div>
-
-            <!-- Mobile Toggle -->
-            <button id="mobile-toggle" class="md:hidden text-neutral-400 hover:text-white transition-colors">
-                <i data-lucide="menu" class="w-6 h-6 menu-icon"></i>
-                <i data-lucide="x" class="w-6 h-6 close-icon hidden"></i>
+        <div class="hidden md:block pr-1 md:pr-2">
+            <button onclick="navigate('contact')" class="group relative inline-flex items-center justify-center overflow-hidden rounded-full p-[1px] font-semibold text-white transition-all hover:shadow-[0_0_20px_rgba(83,74,183,0.4)] hover:-translate-y-0.5">
+                <span class="absolute inset-0 bg-gradient-to-r from-[#534AB7] to-[#0F6E56] opacity-70 group-hover:opacity-100 transition-opacity duration-300"></span>
+                <span class="relative flex items-center gap-2 rounded-full bg-[#0A0A0A] px-6 py-2.5 text-xs transition-all group-hover:bg-transparent">
+                    Let's Talk <i data-lucide="arrow-right" class="w-3 h-3 group-hover:translate-x-1 transition-transform"></i>
+                </span>
             </button>
         </div>
+
+        <!-- Mobile Toggle -->
+        <button id="mobile-toggle" class="md:hidden text-neutral-400 hover:text-white transition-colors pr-2">
+            <i data-lucide="menu" class="w-6 h-6 menu-icon"></i>
+            <i data-lucide="x" class="w-6 h-6 close-icon hidden"></i>
+        </button>
     </header>
 
     <!-- Mobile Menu Overlay -->
@@ -224,7 +222,7 @@
                 <!-- Hero -->
                 <section class="relative pt-40 pb-20 md:pt-52 md:pb-32 overflow-hidden min-h-[90vh] flex flex-col justify-center border-b border-white/5">
                     
-                    <!-- Left Floating Objects -->
+                    <!-- Left Floating Objects (Vertically Centered Frame) -->
                     <div class="absolute hidden lg:flex flex-col justify-between h-[360px] left-[5%] xl:left-[12%] top-1/2 -translate-y-1/2 pointer-events-none z-20">
                         <div class="animate-float-1 w-fit pointer-events-auto">
                             <!-- Draggable Element -->
@@ -244,7 +242,7 @@
                         </div>
                     </div>
 
-                    <!-- Right Floating Objects -->
+                    <!-- Right Floating Objects (Vertically Centered Frame) -->
                     <div class="absolute hidden lg:flex flex-col justify-between items-end h-[360px] right-[5%] xl:right-[12%] top-1/2 -translate-y-1/2 pointer-events-none z-20">
                         <div class="animate-float-3 w-fit pointer-events-auto">
                             <!-- Draggable Element -->
@@ -278,7 +276,7 @@
                         </h1>
                         
                         <p class="reveal delay-200 text-lg md:text-2xl text-neutral-400 max-w-3xl mb-12 leading-relaxed font-light">
-                            Nexvora is an exclusive digital studio engineering <span class="text-white font-medium drop-shadow-md">unforgettable brands</span>, scalable SaaS, and impenetrable security solutions.
+                            Pyronetics is an exclusive digital studio engineering <span class="text-white font-medium drop-shadow-md">unforgettable brands</span>, scalable SaaS, and impenetrable security solutions.
                         </p>
                         
                         <div class="reveal delay-300 flex flex-col sm:flex-row gap-5">
@@ -333,7 +331,7 @@
                                     </div>
                                     <h2 class="text-4xl md:text-5xl font-medium tracking-tight text-white mb-6 leading-tight">Engineered by visionaries.<br/>Designed by perfectionists.</h2>
                                     <p class="text-neutral-400 mb-8 leading-relaxed font-light text-lg">
-                                        Founded by Yugesh and Shanjay Vikram, Nexvora bridges the gap between stunning aesthetic design and battle-tested engineering. We don't just build websites; we engineer digital ecosystems.
+                                        Founded by Yugesh and Shanjay Vikram, Pyronetics bridges the gap between stunning aesthetic design and battle-tested engineering. We don't just build websites; we engineer digital ecosystems.
                                     </p>
                                     <button onclick="navigate('about')" class="inline-flex items-center justify-center bg-[#534AB7] text-white hover:bg-[#534AB7]/90 shadow-[0_0_15px_rgba(83,74,183,0.3)] rounded-full h-10 px-8 text-sm font-medium transition-all hover:-translate-y-1">
                                         Meet the founders
@@ -431,7 +429,7 @@
                         The Collective
                     </div>
                     <h1 class="text-5xl md:text-7xl font-medium tracking-tight text-white mb-8 drop-shadow-lg">
-                        Behind <span class="text-transparent bg-clip-text bg-gradient-to-r from-[#534AB7] to-[#0F6E56]">Nexvora</span>
+                        Behind <span class="text-transparent bg-clip-text bg-gradient-to-r from-[#534AB7] to-[#0F6E56]">Pyronetics</span>
                     </h1>
                     <p class="text-xl text-neutral-400 font-light leading-relaxed">
                         We are a dedicated collective of designers, developers, and security experts. We apply rigorous engineering principles and meticulous design to build the next generation of digital products.
@@ -528,11 +526,18 @@
     <footer class="border-t border-white/10 bg-[#050505]/80 backdrop-blur-md pt-16 pb-8">
         <div class="container mx-auto px-6 max-w-6xl flex flex-col md:flex-row justify-between gap-12 mb-12">
             <div class="max-w-xs">
-                <div class="flex items-center gap-2 font-medium text-white mb-4">
-                    <div class="w-5 h-5 rounded-[4px] bg-gradient-to-br from-[#534AB7] to-[#0F6E56] flex items-center justify-center">
-                        <span class="text-white text-[10px] font-bold brand-text">N</span>
+                <div class="flex items-center gap-3 font-medium text-white mb-4">
+                    <div class="relative flex items-center justify-center w-9 h-9 rounded-lg bg-gradient-to-br from-[#534AB7] to-[#0F6E56] shadow-[0_0_20px_rgba(83,74,183,0.5)] group-hover:scale-110 group-hover:-rotate-6 group-hover:shadow-[0_0_30px_rgba(15,110,86,0.6)] transition-all duration-300 border border-white/20 overflow-hidden">
+                        <div class="absolute -top-1/2 -left-1/2 w-[200%] h-[200%] bg-gradient-to-b from-white/30 to-transparent rotate-45 transform origin-bottom-right pointer-events-none"></div>
+                        <!-- Custom Shield + Code + Growth Arrow SVG -->
+                        <svg xmlns="http://www.w3.org/2000/svg" class="w-[20px] h-[20px] text-white relative z-10 drop-shadow-md" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" class="opacity-40" />
+                            <path d="M8 10L5 13l3 3" />
+                            <path d="M16 10l3 3-3 3" />
+                            <path d="M12 17V7m-3 3l3-3 3 3" />
+                        </svg>
                     </div>
-                    <span class="text-lg font-bold brand-text tracking-wide">Nexvora</span>
+                    <span class="text-xl font-bold brand-text tracking-wide">Pyronetics</span>
                 </div>
                 <p class="text-neutral-500 text-sm mb-6 leading-relaxed">
                     Engineering exceptional brands, scalable SaaS, and robust security solutions.
@@ -564,7 +569,7 @@
         </div>
         
         <div class="container mx-auto px-6 max-w-6xl border-t border-white/5 pt-8 flex flex-col md:flex-row items-center justify-between gap-4 text-xs text-neutral-600">
-            <p id="copyright-year">© 2024 Nexvora. All rights reserved.</p>
+            <p id="copyright-year">© 2024 Pyronetics. All rights reserved.</p>
             <div class="flex gap-4">
                 <a href="#" class="hover:text-neutral-300 transition-colors">Privacy Policy</a>
                 <a href="#" class="hover:text-neutral-300 transition-colors">Terms of Service</a>
@@ -727,6 +732,32 @@
             });
         }
 
+        // --- MAGNETIC NAVIGATION SLIDER LOGIC ---
+        function updateNavSlider(targetElement = null) {
+            const activeLink = targetElement || document.querySelector('.nav-link.active');
+            const slider = document.getElementById('nav-slider');
+            
+            if (activeLink && slider) {
+                slider.style.width = activeLink.offsetWidth + 'px';
+                slider.style.left = activeLink.offsetLeft + 'px';
+            }
+        }
+
+        // Setup hover tracking for the slider
+        function initMagneticNav() {
+            const desktopNav = document.getElementById('desktop-nav');
+            const navLinks = document.querySelectorAll('.nav-link');
+            
+            navLinks.forEach(link => {
+                link.addEventListener('mouseenter', (e) => {
+                    updateNavSlider(e.target);
+                });
+            });
+
+            desktopNav.addEventListener('mouseleave', () => {
+                updateNavSlider(); // Revert back to the active link
+            });
+        }
 
         // --- RENDER DOM ELEMENTS ---
         function renderContent() {
@@ -833,7 +864,7 @@
             });
 
             // Set Year
-            document.getElementById('copyright-year').innerText = `© ${new Date().getFullYear()} Nexvora. All rights reserved.`;
+            document.getElementById('copyright-year').innerText = `© ${new Date().getFullYear()} Pyronetics. All rights reserved.`;
         }
 
         // --- PORTFOLIO FILTERING ---
@@ -906,6 +937,9 @@
                 }
             });
 
+            // Update magnetic sliding line to the new active page
+            updateNavSlider();
+
             // Close mobile menu if open
             const mobileMenu = document.getElementById('mobile-menu');
             const iconMenu = document.querySelector('.menu-icon');
@@ -942,11 +976,11 @@
         window.addEventListener('scroll', () => {
             const nav = document.getElementById('navbar');
             if (window.scrollY > 20) {
-                nav.classList.add('bg-[#0A0A0A]/70', 'backdrop-blur-xl', 'border-white/10', 'shadow-[0_4px_30px_rgba(0,0,0,0.6)]', 'py-4');
-                nav.classList.remove('bg-transparent', 'border-transparent', 'py-6');
+                nav.classList.add('bg-[#0A0A0A]/80', 'border-white/20', 'shadow-[0_8px_32px_rgba(83,74,183,0.15)]', 'w-[85%]', 'py-2');
+                nav.classList.remove('bg-[#0A0A0A]/40', 'border-white/10', 'shadow-[0_8px_32px_rgba(0,0,0,0.3)]', 'w-[92%]', 'py-3');
             } else {
-                nav.classList.remove('bg-[#0A0A0A]/70', 'backdrop-blur-xl', 'border-white/10', 'shadow-[0_4px_30px_rgba(0,0,0,0.6)]', 'py-4');
-                nav.classList.add('bg-transparent', 'border-transparent', 'py-6');
+                nav.classList.remove('bg-[#0A0A0A]/80', 'border-white/20', 'shadow-[0_8px_32px_rgba(83,74,183,0.15)]', 'w-[85%]', 'py-2');
+                nav.classList.add('bg-[#0A0A0A]/40', 'border-white/10', 'shadow-[0_8px_32px_rgba(0,0,0,0.3)]', 'w-[92%]', 'py-3');
             }
         });
 
@@ -960,6 +994,11 @@
                 lucide.createIcons();
             }
             initScrollReveal();
+            
+            // Initialize slider line position and magnetic hover
+            setTimeout(updateNavSlider, 100);
+            initMagneticNav();
+            window.addEventListener('resize', () => updateNavSlider());
 
             // Mobile Menu Toggle logic
             const toggleBtn = document.getElementById('mobile-toggle');
